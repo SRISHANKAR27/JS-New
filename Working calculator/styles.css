@@ -1,0 +1,45 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-image: url("background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+}
+button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    font-size: 18px;
+    border: 1px solid black;
+    margin: 6px;
+    background: bisque;
+    color: black;
+}
+table {
+    width: 250px;
+    border-radius: 14px;
+    background: bisque;
+    border: 1px solid gray;
+    padding:10px 20px 30px;
+}
+input {
+    width: 310px;
+    height: 58px;
+    border-radius: 12px;
+    border: 1px solid gray;
+    background: white;
+    font-size: 20px;
+    text-align: right;
+    padding-right: 8px;
+    margin-bottom: 8px;
+    color: black;
+}
+button:hover {
+    background: white;
+    color: brown;
+}
