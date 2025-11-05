@@ -1,0 +1,96 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f7f9fb;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.container {
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+h2 {
+  margin-bottom: 8px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+input[type="date"], input[type="number"], select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #357ac8;
+}
+
+.result-box {
+  margin-top: 15px;
+  background: #eef3f8;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 16px;
+  min-height: 25px;
+}
+
+hr {
+  margin: 25px 0;
+  border: none;
+  height: 2px;
+  background-color: #ccc;
+  width: 100%;
+}
+
+.temp-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.temp-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.temp-row select, .temp-row input {
+  flex: 1;
+}

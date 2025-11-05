@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Age & Temperature Calculator</title>
+  <link rel="stylesheet" href="styles.css" />
+    <script src="Age temp.js"></script>
+
+</head>
+<body>
+  <h1>Age & Temperature Calculator</h1>
+
+  <div class="container">
+
+    <section class="age-section">
+      <h2>Age Calculator</h2>
+
+      <label for="birthdate">Enter your Birth Date:</label>
+      <input type="date" id="birthdate" max="">
+
+      <label for="futuredate">Select a Future Date:</label>
+      <input type="date" id="futuredate" min="">
+
+      <button id="calcAgeBtn" onclick="calculateAge()">Calculate Age</button>
+
+      <div class="result-box" id="ageResult">Result will appear here</div>
+    </section>
+
+    <hr>
+
+    <section class="temp-section">
+      <h2>Temperature Converter</h2>
+
+      <div class="temp-row">
+        <select id="fromUnit">
+          <option value="C">Celsius (°C)</option>
+          <option value="F">Fahrenheit (°F)</option>
+          <option value="K">Kelvin (K)</option>
+        </select>
+
+        <input type="number" id="tempInput" placeholder="Enter value">
+
+        <select id="toUnit">
+          <option value="C">Celsius (°C)</option>
+          <option value="F">Fahrenheit (°F)</option>
+          <option value="K">Kelvin (K)</option>
+        </select>
+      </div>
+
+      <button id="convertTempBtn" onclick="convertTemperature()">Convert</button>
+
+      <div class="result-box" id="tempResult">Result will appear here</div>
+    </section>
+  </div>
+
+</body>
+</html>

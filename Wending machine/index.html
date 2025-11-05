@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS TASK</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+  <body >
+  <h1>Vending Machine</h1>
+  <div class="container" id="container"></div>
+  <div class="cart" id="cartContainer">
+    <h2>Your Cart</h2>
+    <div id="cartItems"></div>
+    <p id="cartTotal"><b>Total: 0</b></p>
+    <button class="pay-btn" onclick="payNow()">Pay Now</button>
+  </div>
+  <p id="message"></p>
+  <script>
+    let product = [
+      { Name:"Badam milkshake", stock:10, price:"40", Image:"./badam.jpeg" },
+      { Name:"Chocolate milkshake", stock:10, price:"30", Image:"./chocolate.jpeg" },
+      { Name:"Strawberry milkshake", stock:10, price:"30", Image:"./strawberry.jpeg" },
+      { Name:"Vanilla milkshake", stock:10, price:"30", Image:"./vanilla.jpg" },
+      { Name:"Rose milk", stock:10, price:"40", Image:"./rose milk.jpeg" },
+      { Name:"Mango milkshake", stock:10, price:"35", Image:"./mango.avif" },
+      { Name:"Lays", stock:10, price:"10", Image:"./lays.webp" },
+      { Name:"Kurkure", stock:10, price:"10", Image:"./kurkure.jpeg" },
+    ];
+    let cart = [];
+    function loadProducts() {
+      let container = document.getElementById("container");
+      container.innerHTML = "";
+      product.forEach((p, i) => {
+        const card = document.createElement("div");
+        card.className = "product";
+        card.innerHTML = `
+          <img src="${p.Image}" alt="${p.Name}">
+          <h3>${p.Name}</h3>
+          <p>Stock: ${p.stock}</p>
+          <p>Price: ${p.price}</p>
+          <label>Qty:</label>
+          <input type="number" id="qty${i}" min="1" max="${p.stock}" value="1">
+          <button onclick="addToCart(${i})">Add to Cart</button>
+        `;
+        container.appendChild(card);
+      });
+    }
+    loadProducts()
+    function addToCart(index) {
+      const selected = product[index];
+      const qty = parseInt(document.getElementById(`qty${index}`).value);
+      if (isNaN(qty) || qty <= 0) {
+        alert("Please enter a valid quantity.");
+        return;
+      }
+      if (qty > selected.stock) {
+        alert("Not enough stock available!");
+        return;
+      }
+      const existing = cart.find(item => item.Name === selected.Name);
+      if (existing) {
+        existing.qty += qty;
+      } else {
+        cart.push({ ...selected, qty });
+      }
+      updateCartUI();
+    }
+    function updateCartUI() {
+      const cartItems = document.getElementById("cartItems");
+      const cartTotal = document.getElementById("cartTotal");
+      cartItems.innerHTML = "";
+      let total = 0;
+      cart.forEach(item => {
+        const price = parseFloat(item.price.replace('$', ''));
+        const subtotal = price * item.qty;
+        total += subtotal;
+        const div = document.createElement("div");
+        div.className = "cart-item";
+        div.innerHTML = `
+          <span>${item.Name} * ${item.qty}</span>
+          <span>${subtotal.toFixed(2)}</span>
+        `;
+        cartItems.appendChild(div);
+      });
+      cartTotal.innerHTML = `<b>Total: ${total.toFixed(2)}</b>`;
+    }
+    function payNow() {
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+      let total = cart.reduce((sum, item) => sum + parseFloat(item.price.replace('$', '')) * item.qty, 0);
+      const hasDiscount = confirm("Do you have a discount code?");
+      if (hasDiscount) {
+        const code = prompt("Enter discount code:");
+        if (code === "Dis30") {
+          total *= 0.7;
+          alert("Discount applied! 30% off.");
+        } else {
+          alert("Invalid code.");
+        }
+      }
+      const payment = prompt("Choose payment method: (cash/gpay)").toLowerCase();
+      if (payment !== "cash" && payment !== "gpay") {
+        alert("Invalid payment method!");
+        return;
+      }
+      else if (payment === "gpay") {
+        let pin = prompt("Enter your pin:");
+        if (pin !== "2739") {
+          alert("Invalid pin");
+          return;
+        }
+      }
+      alert(`Payment successful via ${payment}!`);
+      alert("Products dispatched successfully!");
+      cart.forEach(item => {
+        const p = product.find(prod => prod.Name === item.Name);
+        p.stock -= item.qty;
+      });
+      document.getElementById("message").textContent =
+        `You purchased ${cart.length} item(s) for ₹${total.toFixed(2)}.`;
+      cart = [];
+      updateCartUI();
+      loadProducts();
+    }
+</script>
+</body>
+</html>

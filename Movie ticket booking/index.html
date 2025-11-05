@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Ticket Booking</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Cineholic</h1>
+
+    
+    <div class="movie-container">
+      <label for="movie">Select Movie:</label>
+      <select id="movie">
+        <option>Meiyazhagan</option>
+        <option>Dude</option>
+        <option>Avatar: Way of Water</option>
+        <option>Avengers: Endgame</option>
+      </select>
+    </div>
+
+    
+    <div class="seat-layout">
+
+      
+      <div class="row lounge">
+        <div class="seat lounge-seat" data-class="lounge"></div>
+        <div class="seat lounge-seat" data-class="lounge"></div>
+        <div class="seat lounge-seat" data-class="lounge"></div>
+        <div class="seat lounge-seat" data-class="lounge"></div>
+      </div>
+
+      
+      <div class="row platinum">
+        <div class="seat" data-class="platinum"></div>
+        <div class="seat" data-class="platinum"></div>
+        <div class="seat" data-class="platinum"></div>
+        <div class="seat" data-class="platinum"></div>
+        <div class="seat" data-class="platinum"></div>
+        <div class="seat" data-class="platinum"></div>
+        <div class="seat" data-class="platinum"></div>
+        <div class="seat" data-class="platinum"></div>
+      </div>
+
+      <div class="row gold">
+        <div class="seat" data-class="gold"></div>
+        <div class="seat" data-class="gold"></div>
+        <div class="seat" data-class="gold"></div>
+        <div class="seat" data-class="gold"></div>
+        <div class="seat" data-class="gold"></div>
+        <div class="seat" data-class="gold"></div>
+        <div class="seat" data-class="gold"></div>
+        <div class="seat" data-class="gold"></div>
+      </div>
+
+      <div class="row silver">
+        <div class="seat" data-class="silver"></div>
+        <div class="seat" data-class="silver"></div>
+        <div class="seat" data-class="silver"></div>
+        <div class="seat" data-class="silver"></div>
+        <div class="seat" data-class="silver"></div>
+        <div class="seat" data-class="silver"></div>
+        <div class="seat" data-class="silver"></div>
+        <div class="seat" data-class="silver"></div>
+      </div>
+    </div>
+
+    
+    <div class="screen">Eyes face this way please</div>
+
+    
+    <div class="summary">
+      <p>Movie: <span id="movieName">Meiyazhagan</span></p>
+      <p>Total Seats Selected: <span id="count">0</span></p>
+      <p>Total Price: <span id="total">0</span></p>
+      <button id="confirm">Confirm Booking</button>
+    </div>
+  </div>
+
+  <script src="movie.js"></script>
+</body>
+</html>
